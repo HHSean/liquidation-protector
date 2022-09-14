@@ -2,7 +2,7 @@
 
 ## Links
 1. [Introduction Deck](https://docs.google.com/presentation/d/1P7nlzPYJrjCPuKpMasZLGXPbLBByhtVsbhr51vgkQi4)
-2. [Video Demo]()
+2. [Video Demo](https://www.youtube.com/watch?v=PEexWs2KhP4)
 3. [Live site](http://liquidation-protector-evmos.s3-website-us-east-1.amazonaws.com/)
 
 ## Contract Addresses (Evmos Mainnet)
