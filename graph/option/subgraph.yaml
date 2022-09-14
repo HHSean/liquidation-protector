@@ -1,0 +1,65 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: KiOption
+    network: evmos
+    source:
+      abi: KIOptionFactory
+      address: "0xaa3E0877cD1a83237599d1Db5249932A054019b7"
+      startBlock: 3606599
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - OptionCreated
+      abis:
+        - name: KIOptionFactory
+          file: ./abis/KIOptionFactory.json
+      eventHandlers:
+        - event: OptionCreated(address,address,indexed address,indexed address,uint256,uint256,bool,bool)
+          handler: handleOptionCreated
+      file: ./src/mapping.ts
+  - kind: ethereum/contract
+    name: KIOptionController
+    network: evmos
+    source:
+      abi: KIOptionController
+      address: "0x47e753FC69542894d07Db11F493354D2fE5714e3"
+      startBlock: 3606581
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Executed
+      abis:
+        - name: KIOptionController
+          file: ./abis/KIOptionController.json
+      eventHandlers:
+        - event: Executed(indexed bytes32,indexed address,uint256,string)
+          handler: handlerExecuted
+      file: ./src/mapping.ts
+templates:
+  - name: ERC20Template
+    kind: ethereum/contract
+    network: evmos
+    source:
+      abi: ERC20
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - ERC20
+      abis:
+        - name: ERC20
+          file: ./abis/ERC20.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handlerOptionTokenTransfer
+        - event: Redeem(indexed address,indexed address,uint256,address,uint256,bool)
+          handler: handlerRedeem
+      file: ./src/mapping.ts

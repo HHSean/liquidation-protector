@@ -1,0 +1,15 @@
+.secret*
+build
+node_modules
+artifacts/
+contracts/artifacts/
+contracts/interfaces/artifacts/
+secret.env
+cache/**
+execution_bot/node_modules
+liquidation_bot/node_modules
+graph/node_modules
+execution_bot/*.env
+liquidation_bot/*.env
+.env*
+ecosystem*
